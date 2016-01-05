@@ -4,6 +4,7 @@
 		echo "</pre>";
 
 		$imagesDir = 'images/';
+		
 		//Récupération de tous les fichiers dans /images
 		$images = glob($imagesDir.'*');
 		
@@ -11,9 +12,6 @@
 		print_r($images);
 		echo "</pre>";
 
-
-
-		echo "</pre>";
 	// je vérifie que mon image a bien été transférée dans mon tmp
 	if (isset($_FILES['user_picture']['tmp_name'])) {
 
