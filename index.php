@@ -1,3 +1,27 @@
+<?php 
+	// vérifier que les champs sont bien valides
+	if (isset($_POST['send'])) {
+
+		echo "<pre>";
+		print_r($_POST);
+		echo "</pre>";
+
+		echo "<pre>";
+		print_r($_FILES);
+		echo "</pre>";
+
+		
+		// 1. Faire un echo de taille du fichier dans l'input file
+		echo "Votre image pèse ".$_FILES['photo']['size']." octet(s).<br>";
+
+		// 2. Afficher le type de l'image
+		echo "Votre fichier est de type :".$_FILES['photo']['type']."<br>";
+
+		move_uploaded_file($_FILES['photo']['tmp_name'],'/uploads/'.$_FILES['photo']['name']);//move_uploaded_file(filename=nom dans le dossier temporaire) , destination='/dossier/'.nom_du_fichier renommé))
+
+	}
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +36,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h1>Inscription</h1>
-				<form>
+				<form method="POST" action="#" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="nom">Nom</label>
 						<input type="text" class="form-control" id="nom" name="nom" placeholder="nom">
@@ -24,15 +48,16 @@
 					<div class="form-group">
 						<label for="photo">Photo de profil</label>
 						<input type="file" id="photo" name="photo">
-						<p class="help-block">	Le poinds de votre photo doit être inférieur à 10 Mo. <br/>
+						<p class="help-block">	Le poids de votre photo doit être inférieur à 10 Mo. <br/>
 												Les formats acceptés : *.jpg *.png *.gif
 						</p>
 					</div>
-					<button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
+					<button type="submit" name="send" class="btn btn-primary">Envoyer</button>
 				</form>
 			</div>
 			<div class="col-md-8" ></div>
 		</div>
 	</div>
+	<img src="<?php echo $_FILES['photo']['tmp_name']; ?>" alt="">
 </body>
 </html>
