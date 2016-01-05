@@ -17,7 +17,7 @@
 		// 2. Afficher le type de l'image
 		echo "Votre fichier est de type :".$_FILES['photo']['type']."<br>";
 
-		move_uploaded_file($_FILES['photo']['tmp_name'],'/uploads/'.$_FILES['photo']['name']);//move_uploaded_file(filename=nom dans le dossier temporaire) , destination='/dossier/'.nom_du_fichier renommé))
+		move_uploaded_file($_FILES['photo']['tmp_name'],'./uploads/'.$_FILES['photo']['name']);//move_uploaded_file(filename=nom dans le dossier temporaire) , destination='/dossier/'.nom_du_fichier renommé))
 
 	}
 
